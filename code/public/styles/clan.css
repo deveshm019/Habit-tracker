@@ -1,0 +1,512 @@
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+* {
+  list-style-type: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: radial-gradient(rgb(241, 239, 239), #d8d7d7);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+header {
+  width: 100vw;
+  position: fixed;
+  background-color: #8c52ff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15vh;
+  color: white;
+  z-index: 1;
+}
+header a {
+  color: white;
+  padding: 10%;
+  border-radius: 3px;
+}
+header a:hover {
+  color: #8c52ff;
+  background-color: white;
+}
+#current a {
+  color: #8c52ff;
+  background-color: white;
+  padding: 10%;
+}
+.resourses {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header li.resourses {
+  width: 5vw;
+}
+.resourses input {
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+}
+#profile .material-symbols-outlined {
+  font-size: 2rem;
+  color: white;
+}
+#profile a:hover {
+  color: transparent;
+  background-color: transparent;
+}
+.empty {
+  height: 15vh;
+}
+.content{
+  margin: 5vh 0vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+.questShop{
+  background-color: aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+  width: 47%;
+  justify-content: space-evenly;
+}
+h1{
+  padding: 2vh 0vh;
+  background-color: #8c52ff;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+.item{
+  border: 2px solid cornflowerblue;
+  /* border-radius: 10px; */
+  background-color:cornflowerblue;
+  margin: 2vh 2vh;
+  text-align: center;
+  height: 60vh;
+  width: 40%;
+  color: white;
+}
+.background {
+  background-color: aliceblue;
+  width: 100%;
+  height: 65%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.item h5{
+  margin: 1vh 0vh;
+}
+.itemFooter{
+  margin: 2vh 0vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.item #buy{
+  border: none;
+  padding: 1vh 4vh;
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: black;
+}
+.item #start{
+  border: none;
+  padding: 1vh 5vh;
+  border-radius: 5px;
+  background-color: #2ea44f;
+  color: white;
+}
+.item #stop{
+  border: none;
+  padding: 1vh 5vh;
+  border-radius: 5px;
+  background-color: #e62143;
+  color: white;
+}
+.item p{
+  margin-top: 2vh;
+}
+.clan{
+  width: 47%;
+}
+.solo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  height: 45vh;
+  padding: 3vh;
+}
+.solo p{
+  color: #8c52ff;
+  font-size: 1.2rem;
+}
+.soloButton{
+  background-color: transparent;
+  border: none;
+  width: 50%;
+  padding: 2vh 1vh;
+  margin: 2vh auto;
+  font-size: 1.2rem;
+}
+#joinClanButton{
+  background-color: #2ea44f;
+  border-radius: 5px;
+  color: white;
+}
+#createClanButton{
+  background-color: gold;
+  color: white;
+  border-radius: 5px;
+}
+.popup{
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  width: 100vw;
+}
+.blurBackground{
+  background-color: black;
+  filter: blur(8px);
+  -webkit-filter: blur(300px);
+  min-height: 90vh;
+  width: 100vw;
+}
+.popupContent{
+  position: absolute;
+  width: 60vw;
+  top: -5%;
+  left: 20%;
+  background-color: white;
+  z-index: 1;
+}
+.popupHeader{
+  display: flex;
+  align-items: center;
+  background-color: #8c52ff;
+}
+.popupHeader span{
+  padding: 3vh;
+  font-size: 1.7rem;
+  color: white;
+}
+.joinClanContent .clanDetails{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  border: 1px solid gray;
+  margin: 1vh 1vh;
+  padding: 1vh;
+  align-items: center;
+}
+.joinClanContent .clanDetails img{
+  border: 1px solid gray;
+  border-radius: 50%;
+}
+.clanListContent .clanDetails input{
+  width: 30%;
+  font-size: 1.2rem;
+  border: none;
+}
+.joinClanContent .clanDetails button{
+  background-color: #2ea44f;
+  border: none;
+  padding: 1vh 4vh;
+  color: white;
+}
+.createClan .clanBanner{
+  margin: 2vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+.createClan .clanBanner .clanBannerItem{
+  display: flex;
+  flex-direction: column;
+}
+.createClan .clanBanner .clanBannerItem > *{
+  margin: 1vh;
+}
+.createClan .clanName,.createClan .clanDesc{
+  padding: 2vh;
+  display: flex;
+}
+.createClan .clanName label{
+  color: #666;
+  font-size: 1.1rem;
+  margin-right: 2vh;
+  margin-left: 8vw;
+}
+.createClan .clanName input{
+  padding: 1vh;
+  width: 50%;
+  background-color: rgb(238, 233, 233);
+  border: none;
+  border-radius: 5px;
+}
+.createClan .clanDesc label{
+  color: #666;
+  font-size: 1.1rem;
+  margin-right: 2vh;
+  margin-left: 4.8vw;
+}
+.createClan .clanDesc textarea{
+  padding: 1vh;
+  background-color: rgb(238, 233, 233);
+  border: none;
+  border-radius: 5px;
+}
+.createClan #createClanSubmit{
+  padding: 1vh 3vh;
+  width: 20%;
+  margin: 3vh 40%;
+  border: none;
+  background-color: #ffbd03;
+  border-radius: 5px;
+  color: white;
+}
+.joined .clanPageButtons{
+  display: flex;
+  justify-content: space-evenly;
+}
+.joined .clanPageButtons button{
+  border: none;
+  background-color: aliceblue;
+  padding: 1vh;
+  width: 32.5%;
+  margin-bottom: 1vh;
+}
+.joined .clanPageButtons .active{
+  background-color: white;
+}
+.joined .clanHomePage{
+  background-color: white;
+  width: 99%;
+  margin: auto;
+}
+.joined .clanHomePage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.joined .clanHomePage > *{
+  margin: 2vh;
+} 
+.joined .clanHomePage .removeMember{
+  background-color: transparent;
+  border: none;
+}
+.joined .clanHomePage .clanMember{
+  display: flex;
+  justify-content: space-between;
+  border:1px solid gray;
+  width: 80%;
+  padding: 1vh;
+}
+.joined .clanHomePage .questProgress{
+  border-radius: 20px;
+  background-color: rgb(238, 233, 233);
+  width: 60%;
+}
+.joined .clanHomePage .questProgress input{
+  border: none;
+  border-radius: 20px;
+  background-color: gold;
+  text-align: center;
+  color: white;
+}
+.joined .clanHomePage #leaveClan{
+  background-color: #e62143;
+  color: white;
+  padding: 1vh 2vh;
+  border: none;
+  border-radius: 5px;
+}
+.joined .clanChat, .joined .recruitMembers{
+  z-index: 0;
+  position: absolute;
+  top: 42%;
+  background-color: white;
+  width: 47%;
+  right: 1%;
+  margin: auto;
+  height: 56vh;
+}
+.joined .clanChat .chatBox{
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 1vh;
+  background-color: aliceblue;
+  height: 45vh;
+  overflow-y: scroll;
+}
+.joined .clanChat .chatBox .chatMessage{
+  margin: 2vh 2vh;
+  background-color: white;
+  padding: 1vh;
+  border-radius: 10px;
+}
+.joined .clanChat .newChatMessage{
+  display: flex;
+  align-items: center;
+}
+.joined .clanChat input{
+  margin: 1vh;
+  border: none;
+  padding: 1vh;
+  width: 90%;
+  background-color: rgb(238, 233, 233);
+}
+.joined .clanChat #sendMessageButton{
+  border: none;
+  background-color: transparent;
+}
+.joined .recruitMembersButtons{
+  display: flex;
+  justify-content: space-around;
+}
+.joined .recruitMembersButtons button{
+  background-color: aliceblue;
+  border: none;
+  font-size: 2rem;
+  width: 50%;
+}
+.joined .recruitMembersButtons .active{
+  background-color: white;
+}
+.joined .recruitMembers .globalPlayers{
+  overflow-y: scroll;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 2vh;
+}
+.joined .recruitMembers .globalPlayer{
+  width: 90%;
+  margin: 1vh auto;
+  padding: 1vh;
+  border: 1px solid gray;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr;
+}
+.joined .recruitMembers .globalPlayer #playerLeague{
+  justify-self: center;
+  align-self: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.joined .recruitMembers .globalPlayer h6{
+  padding-bottom: 1vh;
+  border-bottom: 1px solid #999;
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.joined .recruitMembers .globalPlayer ul{
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.joined .recruitMembers .globalPlayer ul li > *{
+  margin: 1vh;
+}
+.joined .recruitMembers .globalPlayer #addUser{
+  justify-self: center;
+  align-self: center;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.joined .recruitMembers .existingPlayer{
+  padding: 2vh;
+}
+.joined .recruitMembers .existingPlayer input{
+  background-color: rgb(238, 233, 233);
+  border: none;
+  padding: 2vh;
+  width: 90%;
+  border-radius: 10px;
+}
+.joined .recruitMembers .existingPlayer span{
+  margin: 2vh;
+  font-size: 1.5rem;
+  background-color: white;
+}
+.joined .recruitMembers .existingPlayer p{
+  text-align: center;
+  padding: 2vh;
+  margin-top: 2vh;
+  color: #999;
+  font-size: 1.5rem;
+}
+.joined .recruitMembers .existingPlayerInfo{
+  width: 90%;
+  margin: 3vh auto;
+  padding: 1vh;
+  border: 1px solid gray;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr;
+}
+.joined .recruitMembers .existingPlayerInfo #playerLeague{
+  justify-self: center;
+  align-self: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.joined .recruitMembers .existingPlayerInfo h6{
+  padding-bottom: 1vh;
+  border-bottom: 1px solid #999;
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.joined .recruitMembers .existingPlayerInfo ul{
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.joined .recruitMembers .existingPlayerInfo ul li > *{
+  margin: 1vh;
+}
+.joined .recruitMembers .existingPlayerInfo #addUser{
+  justify-self: center;
+  align-self: center;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.visible {
+  display: visible;
+}
+.invisible {
+  display: none;
+}
