@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="/styles/clan.css" />
+</head>
+
+<body>
+  <form action="" method="post">
+    <header>
+      <li>
+        <img src="/images/logo.png" alt="logo" width="80vw" height="80vh" />
+      </li>
+
+      <li>
+        <a href="./homePage.ejs?=<%=userName%>" style="text-decoration: none">Home</a>
+      </li>
+
+      <li>
+        <a href="./shop.ejs?=<%=userName%>" style="text-decoration: none">Shop</a>
+      </li>
+
+      <li>
+        <a href="./inventory.ejs?=<%=userName%>" style="text-decoration: none">Inventory</a>
+      </li>
+
+      <li id="current">
+        <a href="./clan.ejs?=<%=userName%>" style="text-decoration: none">Clan</a>
+      </li>
+
+      <li class="resourses">
+        <img src="/images/coins.png" alt="coins" width="20vw" height="20vh" />&nbsp;<input type="text" id="coins"
+          name="coins" value="<%=coins%>" contenteditable="false" />
+      </li>
+
+      <li class="resourses">
+        <img src="/images/gems.png" alt="gems" width="20vw" height="20vh" />&nbsp;<input type="text" name="gems"
+          value="<%=gems%>" contenteditable="false" />
+      </li>
+
+      <li id="profile">
+        <a href="./profile.ejs?=<%=userName%>"><span class="material-symbols-outlined"> account_circle </span></a>
+      </li>
+    </header>
+  </form>
+  <div class="empty"></div>
+  <div class="content">
+
+    <form action="/quest" class="questShop" method="post">
+      <input type="hidden" name="userName" value=<%=userName%>>
+      <input type="hidden" name="clanName" value=<%=clanName%>>
+      <input type="hidden" name="gems" value=<%=gems%>>
+      <h1>Quest Shop</h1>
+      <% const itemTitle = ["Battling-Habits-1","Holding-Grounds-1","Defending-Castle-1","Smart-Negotiations-1","Battling-Habits-2","Holding-Grounds-2","Defending-Castle-2","Smart-Negotiations-2","Battling-Habits-3","Holding-Grounds-3","Defending-Castle-3","Smart-Negotiations-3","Battling-Habits-4","Holding-Grounds-4","Defending-Castle-4","Smart-Negotiations-4"] %>
+      <% const itemGroup = ["battlingHabits","holdingGrounds","defendingCastle","smartNegotiations"] %>
+      <% const itemPrice = [2,5,7,10] %>
+      <%const itemReward = [50,100,150,200]%>
+      <% const itemStats = ["attack","persistence","defence","intelligence"] %>
+      <% for(var i=0;i<16;i++){ %>
+        <div class="item">
+          <% var backgroundUrl = "/images/"+itemTitle[i]+".png" %>
+          <div class="background" style="background-image:url(<%=backgroundUrl%>)"></div>
+          <h5><%=itemTitle[i]%></h5>
+          <div class="itemFooter">
+            <% const itemStatsUrl =  "/images/"+itemStats[(i%4)]+".png"%>
+            <img src=<%=itemStatsUrl%> alt="" width="25vw" height="25vh">
+            <% if(quests.includes(itemTitle[i])){ %>
+              <% if(questName == itemTitle[i]){%>
+                <button type="post" id="stop" name="questButton" value="stop_<%=itemTitle[i]%>_-1">Stop</button>
+                <% } else{ %>
+              <button type="submit" id="start" name="questButton" value="start_<%=itemTitle[i]%>_-1">Start</button>
+              <% } %>
+            <% } else{ %>
+              <button type="submit" id="buy" name="questButton" value="buy_<%=itemTitle[i]%>_<%=itemPrice[(Math.floor(i*0.25))]%>">
+                <img src="/images/gems.png" alt="" width="20vw" height="20vh">
+                &nbsp;<%=itemPrice[(Math.floor(i*0.25))]%>
+              </button>
+            <% } %>
+          </div>
+          <p>Reward: <%=itemReward[Math.floor(i*0.25)]%> X <img src="/images/coins.png" width="20vw" height="20vh"></p>
+        </div>
+        <% } %>
+    </form>
+
+    <div class="clan">
+
+      <h1>Clan</h1>
+
+      <div class="joined <%=playerJoined%>">
+
+        <div class="clanPageButtons">
+          <button id="clanHomePage" class="active"><img src="/images/clanHomePageIcon.png" width="25vw" height="25vh"></button>
+          <button id="clanChat"><img src="/images/clanChatIcon.png" width="25vw" height="25vh"></button>
+          <button id="recruitMembers"><img src="/images/clanRecruitMembersIcon.png" width="25vw"height="25vh"></button>
+        </div>
+
+        <% if(playerJoined=="visible"){ %>
+        <form class="clanHomePage visible" method="post" action="/clanHomePage">
+          <input type="hidden" name="userName" value=<%=userName%>>
+          <input type="hidden" name="clanName" value=<%=clanName%>>
+          <% const clanBannerUrl = "/images/"+clanBanner+".png" %>
+          <img src=<%=clanBannerUrl%> alt="" width="100vw" height="100vh">
+          <h4><%=clanName%></h4>
+          <% for(var i = 0;i<clanMembers.length;i++){ %>
+            <div class="clanMember">
+              <img src="/images/l1.png" alt="" width="30vw" height="30vh">
+              <span><%=clanMembers[i]%></span>
+                <% if(i>0){ %>
+                  <% if(userName==clanLeader){ %>
+                  <button class="removeMember" id="member<%=i%>" name="removePlayer" value="remove_<%=clanMembers[i]%>" type="submit"><img src="/images/removeMember.png" width="30vw" height="30vh"></button>
+                  <% }else{ %>
+                    <img src="/images/member.png" width="30vw" height="30vh">
+                    <% } %>
+                  <% }else{%>
+                    <img src="/images/clanLeader.png" width="30vw" height="30vh">
+                    <% } %>
+
+            </div>
+            <% } %>
+            <% if(questStart == "allowed"){ %>
+              <img src="/images/<%=questName%>.png" width="70vw" height="70vh">
+            <p><%=questName%></p>
+            <div class="questProgress">
+              <% const width = "width:"+questProgress+"%" %>
+              <input type="text" value=<%=questProgress%> name="questProgress" style=<%=width%> contenteditable="false">
+          </div>
+              <% }else{ %>
+            <img src="/images/empty.png" width="70vw" height="70vh">
+            <p>Select any Quest</p>
+            <div class="questProgress">
+              <input type="text" value="50" name="questProgress" style="width:0%" contenteditable="false">
+          </div>
+          <% } %>
+            <button id="leaveClan" name="leaveClan" value="leaveClan" type="submit">Leave</button>
+        </form>
+
+        <form class="clanChat invisible" action="/sendMessage" method="post">
+          <div class="chatBox">
+            <% for( var i = 0;i<clanChat.length;i++){ %>
+              <div class="chatMessage">
+                <p id="memberName"><%=clanChat[i].split("~")[0]%></p>
+                <p id="memberMessage">--><%=clanChat[i].split("~")[1]%></p>
+              </div>
+              <% } %>
+          </div>
+          <div class="newChatMessage">
+            <input type="text" name="newChatMessage">
+            <button id="sendMessageButton" type="submit"><img src="/images/sendMessage.png" width="30vw" height="30vh"></button>
+          </div>
+          <input type="hidden" name="userName" value=<%=userName%>>
+          <input type="hidden" name="clanName" value=<%=clanName%>>
+        </form>
+
+        <div class="recruitMembers invisible">
+
+          <div class="recruitMembersButtons">
+            <button id="globalPlayersPage" class="active">
+              <span class="material-symbols-outlined" type="button">
+                globe
+                </span>
+            </button>
+            <button id="existingPlayerPage">
+              <span class="material-symbols-outlined" type="button">
+                search
+                </span>
+            </button>
+          </div>
+
+          <div class="existingPlayer invisible">
+            <input type="text" name="findPlayer" id="">
+          <span class="material-symbols-outlined" type="button">
+            search
+            </span>
+            <% if(false){ %>
+              <div class="existingPlayerInfo">
+                <img src="/images/l1.png" width="60vw" height="55vh" id="playerLeague">
+                <h6>#Player <%=i%></h6>
+                <ul class="existingPlayersStats">
+                  <li id="existingPlayerAttack"><img src="/images/attack.png" width="20vw" height="20vh">10</li>
+                  <li id="existingPlayerPersistence"><img src="/images/persistence.png" width="20vw" height="20vh">10</li>
+                  <li id="existingPlayerDefence"><img src="/images/defence.png" width="20vw" height="20vh">10</li>
+                  <li id="existingPlayerIntelligence"><img src="/images/intelligence.png" width="20vw" height="20vh">10</li>
+                </ul>
+                <img src="/images/addMember.png" alt="" width="30vw" height="30vh" id="addUser" type="button">
+              </div>
+              <% }else{ %>
+            <p class="noMatch invisible">Sorry, no match Found!</p>
+            <% } %>
+          </div>
+
+          <div class="globalPlayers visible">
+            <% for(var i=0;i<3;i++){ %>
+              <div class="globalPlayer">
+                <img src="/images/l1.png" width="60vw" height="55vh" id="playerLeague">
+                <h6>#Player <%=i%></h6>
+                <ul class="globalPlayersStats">
+                  <li id="globalPlayerAttack"><img src="/images/attack.png" width="20vw" height="20vh">10</li>
+                  <li id="globalPlayerPersistence"><img src="/images/persistence.png" width="20vw" height="20vh">10</li>
+                  <li id="globalPlayerDefence"><img src="/images/defence.png" width="20vw" height="20vh">10</li>
+                  <li id="globalPlayerIntelligence"><img src="/images/intelligence.png" width="20vw" height="20vh">10</li>
+                </ul>
+                <img src="/images/addMember.png" alt="" width="30vw" height="30vh" id="addUser" type="button">
+              </div>
+              <% } %>
+          </div>
+        </div>
+      </div>
+<% }else{%>
+      <div class="solo visible">
+        <p>You are not part of any clan.<br>Join an existing clan or create a new one.</p>
+        <button id="joinClanButton" class="soloButton">Join</button>
+        <button id="createClanButton" class="soloButton">Create</button>
+      </div>
+      <% } %>
+      <form action="/joinClan" class="joinClan invisible popup">
+        <div class="blurBackground"></div>
+        <div class="joinClanContent popupContent">
+        <div class="popupHeader">
+          <h1>Join Clan</h1>
+        <span class="material-symbols-outlined" type="button" id="closeJoinClanPopup">
+          close
+          </span>
+        </div>
+        <% for(var i = 0;i<3;i++){ %>
+          <div class="clanDetails">
+            <img src="/images/attack.png" alt="" width="30vw" height="30vh">
+            <input type="text" value="clan<%=i%>" contenteditable="false">
+            <span id="clanMembers"><%=i%>/5</span>
+            <button id="joinClan_clan<%=i%>">Join</button>
+          </div>
+          <% } %>
+        </div>
+      </form>
+
+      <form class="createClan invisible popup" action="/createClan">
+        <div class="blurBackground"></div>
+        <div class="creteClanContent popupContent">
+        <div class="popupHeader">
+          <h1>Create Clan</h1>
+        <span class="material-symbols-outlined" type="button" id="closeCreateClanPopup">
+          close
+          </span>
+        </div>
+        <div class="clanBanner">
+          <div class="clanBanner1 clanBannerItem">
+            <img src="/images/clanBanner1.png" alt="" width="70vw" height="70vw">
+            <input type="radio" name="clanBanner" value="clanBanner1" checked>
+          </div>
+          <div class="clanBanner2 clanBannerItem">
+            <img src="/images/clanBanner2.png" alt="" width="70vw" height="70vw">
+            <input type="radio" name="clanBanner" value="clanBanner1">
+          </div>
+          <div class="clanBanner3 clanBannerItem">
+            <img src="/images/clanBanner3.png" alt="" width="70vw" height="70vw">
+            <input type="radio" name="clanBanner" value="clanBanner1">
+          </div>
+          <div class="clanBanner4 clanBannerItem">
+            <img src="/images/clanBanner4.png" alt="" width="70vw" height="70vw">
+            <input type="radio" name="clanBanner" value="clanBanner1">
+          </div>
+          <div class="clanBanner5 clanBannerItem">
+            <img src="/images/clanBanner5.png" alt="" width="70vw" height="70vw">
+            <input type="radio" name="clanBanner" value="clanBanner1">
+          </div>
+        </div>
+        <div class="clanName">
+          <label for="">Clan Name: </label>
+        <input type="text" name="clanName">
+        </div>
+        <div class="clanDesc">
+          <label for="">Clan Description: </label>
+          <textarea name="clanDesc" id="" cols="47" rows="3"></textarea>
+        </div>
+        <button type="button" id="createClanSubmit">
+          <img src="/images/coins.png" alt="" width="20vw" height="20vw">&nbsp;100
+        </button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="/js/clan.js"></script>
+</body>
+
+</html>
